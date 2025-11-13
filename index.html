@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Whiteboard - By Harsh</title>
+  <style>
+    body { text-align: center; }
+    canvas { border: 1px solid black; cursor: crosshair; }
+  </style>
+</head>
+<body>
+  <h2>Whiteboard By Harsh</h2>
+  <canvas id="board" width="800" height="500"></canvas>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+  <script>
+    async function main() {
+      const pyodide = await loadPyodide();
+      const response = await fetch("main.py");
+      const code = await response.text();
+      await pyodide.runPythonAsync(code);
+    }
+    main();
+  </script>
+</body>
+</html>
